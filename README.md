@@ -3,9 +3,23 @@
 
 ---
 
+## 🤖 AI Tools I Use
+<p align="center">
+  <img src="https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white" />
+  <img src="https://img.shields.io/badge/Claude%20AI-000000?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cursor-FF6F00?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Dora-8A2BE2?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Gamma-663399?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/GitHub%20Copilot-000000?style=for-the-badge&logo=githubcopilot&logoColor=white" />
+  <img src="https://img.shields.io/badge/Notion%20AI-000000?style=for-the-badge&logo=notion&logoColor=white" />
+</p>
+
+---
+
 ## 🚀 About Me  
 🎓 I’m a **Computer Science student** passionate about **web development, AI, and automation**.  
-💡 I explore and use advanced **AI tools** like ChatGPT, Claude AI, Gemini, Cursor, Dora, Gamma, GitHub Copilot, and Notion AI to supercharge my learning & productivity.  
+💡 I explore and use advanced **AI tools** to supercharge my learning & productivity.  
 🌱 Currently learning **Full-Stack Development** and **Data Structures & Algorithms**.  
 ✨ Goal: Build AI-powered web applications that solve real-world problems.  
 
@@ -31,16 +45,6 @@
 ![DBMS](https://img.shields.io/badge/DBMS-FF6F00?style=for-the-badge)
 ![Data Structures](https://img.shields.io/badge/Data%20Structures-4CAF50?style=for-the-badge)
 
-**🤖 AI Tools**  
-![ChatGPT](https://img.shields.io/badge/ChatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
-![Claude AI](https://img.shields.io/badge/Claude%20AI-000000?style=for-the-badge)
-![Gemini](https://img.shields.io/badge/Gemini-4285F4?style=for-the-badge&logo=google&logoColor=white)
-![Cursor](https://img.shields.io/badge/Cursor-FF6F00?style=for-the-badge)
-![Dora](https://img.shields.io/badge/Dora-8A2BE2?style=for-the-badge)
-![Gamma](https://img.shields.io/badge/Gamma-663399?style=for-the-badge)
-![GitHub Copilot](https://img.shields.io/badge/GitHub%20Copilot-000000?style=for-the-badge&logo=githubcopilot&logoColor=white)
-![Notion AI](https://img.shields.io/badge/Notion%20AI-000000?style=for-the-badge&logo=notion&logoColor=white)
-
 ---
 
 ## 📊 GitHub Stats  
@@ -51,6 +55,11 @@
 
 ## 📈 Contribution Streak  
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=mansi-10-4&theme=tokyonight&hide_border=true)](https://git.io/streak-stats)  
+
+---
+
+## 📊 Activity Graph  
+[![Mansi's GitHub activity graph](https://github-readme-activity-graph.vercel.app/graph?username=mansi-10-4&theme=tokyo-night)](https://github.com/mansi-10-4)
 
 ---
 
