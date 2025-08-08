@@ -2,15 +2,14 @@ name: Update GitHub Profile
 
 on:
   schedule:
-    - cron: "0 0 * * *" # Daily at midnight UTC
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Fetch GitHub Stats
         uses: anmol098/waka-readme-stats@master
@@ -25,12 +24,7 @@ jobs:
           SHOW_LOC_CHART: "False"
 
       - name: Get latest repositories
-        shell: bash
-        run: |
-          repos=$(curl -s https://api.github.com/users/mansi-10-4/repos?sort=updated&per_page=5 | jq -r ".[] | \"- [\" + .name + \"](\" + .html_url + \") ⭐ \" + (.stargazers_count|tostring) + \" - \" + (.description // \"No description\") + \" (Created: \" + .created_at[0:10] + \")\"")
-          echo "LATEST_PROJECTS<<EOF" >> $GITHUB_ENV
-          echo "$repos" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+        run: ./scripts/update-latest-repos.sh
 
       - name: Update README
         run: |
