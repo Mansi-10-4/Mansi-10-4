@@ -1,31 +1,74 @@
-name: Auto Update README
+name: Auto Update README with GitHub Stats
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # runs daily at midnight UTC
-  workflow_dispatch:     # allows manual trigger
+    - cron: '0 0 * * *'  # daily at midnight UTC
+  workflow_dispatch:
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
-    - name: Update timestamp in README
+    - name: Install dependencies (jq, gh)
       run: |
+        sudo apt-get update
+        sudo apt-get install -y jq
+        sudo apt-get install -y gh
+
+    - name: Authenticate GitHub CLI
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: echo $GITHUB_TOKEN | gh auth login --with-token
+
+    - name: Fetch repo data and compute stats
+      id: fetch_stats
+      run: |
+        echo "Fetching repos..."
+        REPOS=$(gh api user/repos --paginate --jq '.[] | {language: .language, stargazers_count: .stargazers_count}')
+        echo "$REPOS" > repos.json
+
+        REPO_COUNT=$(echo "$REPOS" | jq -s length)
+        TOTAL_STARS=$(echo "$REPOS" | jq '[.[] | .stargazers_count] | add')
+
+        # Count repos per language (excluding nulls)
+        LANG_COUNTS=$(echo "$REPOS" | jq -r '.language // "Unknown"' | sort | uniq -c | sort -nr)
+
+        # Format top languages markdown list (top 5)
+        TOP_LANGUAGES=$(echo "$LANG_COUNTS" | head -n 5 | awk '{count=$1; lang=$2; print "- " lang " (" count " repos)"}' | paste -sd '\n' -)
+
+        echo "::set-output name=repo_count::$REPO_COUNT"
+        echo "::set-output name=total_stars::$TOTAL_STARS"
+        echo "::set-output name=top_languages::$TOP_LANGUAGES"
+
+    - name: Update README placeholders
+      run: |
+        REPO_COUNT=${{ steps.fetch_stats.outputs.repo_count }}
+        TOTAL_STARS=${{ steps.fetch_stats.outputs.total_stars }}
+        TOP_LANGUAGES="${{ steps.fetch_stats.outputs.top_languages }}"
+        # Escape slashes and ampersands for sed replacement
+        TOP_LANGUAGES_ESCAPED=$(echo "$TOP_LANGUAGES" | sed -e 's/[\/&]/\\&/g')
+
         CURRENT_DATE=$(date -u +"%Y-%m-%d %H:%M UTC")
-        # Replace placeholder with current date
+
+        sed -i "s/Total repositories: <!--REPO_COUNT-->/Total repositories: $REPO_COUNT/" README.md
+        sed -i "s/Total stars: <!--TOTAL_STARS-->/Total stars: $TOTAL_STARS/" README.md
+        sed -i "/<!--TOP_LANGUAGES-->/c\\
+$TOP_LANGUAGES_ESCAPED
+" README.md
         sed -i "s/Last updated: <!--LAST_UPDATE-->/Last updated: $CURRENT_DATE/" README.md
 
-    - name: Commit changes
+    - name: Commit and push if changes detected
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git add README.md
-        git diff --quiet && echo "No changes detected" || git commit -m "Update README timestamp"
-    
-    - name: Push changes
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto update README with GitHub stats"
+          git push
+        fi
