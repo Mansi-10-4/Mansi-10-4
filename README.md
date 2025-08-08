@@ -47,8 +47,30 @@
 
 ---
 
+## 📊 GitHub Stats Summary
+
+Total repositories: <!--REPO_COUNT-->  
+Total stars: <!--TOTAL_STARS-->  
+
+### Top Languages
+<!--TOP_LANGUAGES-->
+
+---
+
+## 📈 Contribution Streak  
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=mansi-10-4&theme=tokyonight)
+
+---
+
+## 📊 Activity Graph  
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=mansi-10-4&theme=tokyo-night)
+
+---
+
 ## 📊 GitHub Stats  
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mansi-10-4&show_icons=true&theme=tokyonight)  
+
+## 📊 Top Languages  
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mansi-10-4&layout=compact&theme=tokyonight)  
 
 ---
