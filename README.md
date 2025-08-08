@@ -47,30 +47,8 @@
 
 ---
 
-## 📊 GitHub Stats Summary
-
-Total repositories: <!--REPO_COUNT-->  
-Total stars: <!--TOTAL_STARS-->  
-
-### Top Languages
-<!--TOP_LANGUAGES-->
-
----
-
-## 📈 Contribution Streak  
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=mansi-10-4&theme=tokyonight)
-
----
-
-## 📊 Activity Graph  
-![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=mansi-10-4&theme=tokyo-night)
-
----
-
 ## 📊 GitHub Stats  
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mansi-10-4&show_icons=true&theme=tokyonight)  
-
-## 📊 Top Languages  
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mansi-10-4&layout=compact&theme=tokyonight)  
 
 ---
@@ -85,6 +63,12 @@ Total stars: <!--TOTAL_STARS-->
 
 ---
 
+## 🚀 Latest Projects  
+<!-- LATEST_PROJECTS:START -->
+<!-- LATEST_PROJECTS:END -->
+
+---
+
 ## ☕ Support Me  
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/mansipatel)  
 
@@ -96,8 +80,4 @@ Total stars: <!--TOTAL_STARS-->
 
 ---
 
-⚡ **Fun fact:** I’ve tried more AI tools than coffee flavors — and that’s saying something ☕🤓
-
----
-
-### 📅 Last updated: <!--LAST_UPDATE-->
+⚡ **Fun fact:** I’ve tried more AI tools than coffee flavors — and that’s saying something ☕🤓  
