@@ -59,8 +59,7 @@
 ---
 
 ## 📊 Activity Graph  
-[![Mansi's GitHub activity graph](https://github-readme-activity-graph.vercel.app/graph?username=mansi-10-4&theme=tokyo-night)](https://github.com/mansi-10-4)
-
+[![GitHub Streak](https://streak-stats.demolab.com?user=Mansi-10-4)](https://git.io/streak-stats)
 ---
 
 ## 🚀 Latest Projects  
