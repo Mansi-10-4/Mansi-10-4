@@ -74,4 +74,8 @@
 
 ---
 
-⚡ **Fun fact:** I’ve tried more AI tools than coffee flavors — and that’s saying something ☕🤓  
+⚡ **Fun fact:** I’ve tried more AI tools than coffee flavors — and that’s saying something ☕🤓
+
+---
+
+### 📅 Last updated: <!--LAST_UPDATE-->
