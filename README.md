@@ -63,12 +63,6 @@
 
 ---
 
-## 🚀 Latest Projects  
-<!-- LATEST_PROJECTS:START -->
-<!-- LATEST_PROJECTS:END -->
-
----
-
 ## ☕ Support Me  
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/mansipatel)  
 
