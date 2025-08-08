@@ -1,0 +1,41 @@
+name: Update GitHub Profile
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Daily at midnight UTC
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Fetch GitHub Stats
+        uses: anmol098/waka-readme-stats@master
+        with:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SHOW_LINES_OF_CODE: "True"
+          SHOW_PROFILE_VIEWS: "True"
+          SHOW_COMMIT: "True"
+          SHOW_PR: "True"
+          SHOW_ISSUE: "True"
+          SHOW_REPO: "True"
+          SHOW_LOC_CHART: "False"
+
+      - name: Get latest repositories
+        run: |
+          repos=$(curl -s https://api.github.com/users/mansi-10-4/repos?sort=updated&per_page=5 | jq -r '.[] | "- [" + .name + "](" + .html_url + ") ⭐ " + (.stargazers_count|tostring) + " - " + (.description // "No description") + " (Created: " + .created_at[0:10] + ")"')
+          echo -e "LATEST_PROJECTS<<EOF\n$repos\nEOF" >> $GITHUB_ENV
+
+      - name: Update README
+        run: |
+          sed -i '/<!-- LATEST_PROJECTS:START -->/,/<!-- LATEST_PROJECTS:END -->/c\<!-- LATEST_PROJECTS:START -->\n'"$LATEST_PROJECTS"'\n<!-- LATEST_PROJECTS:END -->' README.md
+
+      - name: Commit Changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git commit -am "🔄 Updated profile stats and latest projects"
+          git push
