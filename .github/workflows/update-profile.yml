@@ -1,28 +1,31 @@
-name: Update Latest Projects
+name: Auto Update README
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs every day at midnight UTC
-  workflow_dispatch: # Allows manual trigger
+    - cron: '0 0 * * *'  # runs daily at midnight UTC
+  workflow_dispatch:     # allows manual trigger
 
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-      - name: Fetch latest repos
-        uses: gautamkrishnar/blog-post-workflow@master
-        with:
-          comment_tag_name: "LATEST_PROJECTS"
-          feed_list: "https://github.com/mansi-10-4.atom"
-          max_post_count: "5"
+    - name: Update timestamp in README
+      run: |
+        CURRENT_DATE=$(date -u +"%Y-%m-%d %H:%M UTC")
+        # Replace placeholder with current date
+        sed -i "s/Last updated: <!--LAST_UPDATE-->/Last updated: $CURRENT_DATE/" README.md
 
-      - name: Commit changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add .
-          git commit -m "Updated latest projects section"
-          git push
+    - name: Commit changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add README.md
+        git diff --quiet && echo "No changes detected" || git commit -m "Update README timestamp"
+    
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
